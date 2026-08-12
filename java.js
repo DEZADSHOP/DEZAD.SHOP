@@ -61,28 +61,23 @@ document.addEventListener("DOMContentLoaded", () => {
     const searchBtn = document.getElementById("searchBtn");
 
     function performSearch() {
-        const query = searchInput.value.trim().toLowerCase();
-        
-        if (query === "") {
-            console.log("حقل البحث فارغ");
-            return;
-        }
+        const searchInput = document.querySelector("#searchInput");
 
-        console.log("جاري البحث عن الكلمة:", query);
-        
-        // --- ضع هنا كود البحث الخاص بمنتجات ديزاد شوب ---
-        // مثال لتصفية عناصر موجودة في الصفحة:
-        /*
-        const products = document.querySelectorAll(".product-card"); // غيرها حسب اسم كلاس المنتجات عندك
-        products.forEach(product => {
-            const title = product.textContent.toLowerCase();
-            if (title.includes(query)) {
-                product.style.display = "block";
-            } else {
-                product.style.display = "none";
-            }
-        });
-        */
+searchInput.addEventListener("input", function () {
+    const searchText = this.value.toLowerCase().trim();
+
+    const products = document.querySelectorAll(".product-card");
+
+    products.forEach(product => {
+        const productText = product.textContent.toLowerCase();
+
+        if (productText.includes(searchText)) {
+            product.style.display = "";
+        } else {
+            product.style.display = "none";
+        }
+    });
+});
     }
 
     // البحث عند الضغط على زر "بحث"
