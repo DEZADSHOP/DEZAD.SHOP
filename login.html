@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop DZ - Log in</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body {
+            background-color: #0b1410;
+            background-image: linear-gradient(135deg, rgba(14, 34, 23, 0.6) 0%, rgba(7, 15, 11, 0.9) 100%);
+            display: flex; justify-content: center; align-items: center; height: 100vh; overflow: hidden;
+        }
+        .login-card {
+            background: #0e1712; border: 1px solid #1b3624; border-radius: 20px;
+            padding: 40px 30px; width: 100%; max-width: 420px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7), 0 0 25px rgba(35, 134, 54, 0.15);
+            text-align: center;
+        }
+        .login-card h2 { color: #4ee476; margin-bottom: 30px; font-size: 2rem; font-weight: 600; }
+        
+        /* تعديل الاتجاه وحقول الإدخال لتكون من اليسار لليمين */
+        .input-group { position: relative; margin-bottom: 20px; direction: ltr; }
+        .input-group input {
+            width: 100%; padding: 14px 45px 14px 45px; background: #132219;
+            border: 1px solid #1f3d2a; color: #fff; border-radius: 12px; outline: none; font-size: 0.95rem; text-align: left; transition: 0.3s;
+        }
+        .input-group input::placeholder { color: #6e7681; }
+        .input-group input:focus { border-color: #2ea043; box-shadow: 0 0 10px rgba(46, 160, 67, 0.3); }
+        
+        /* تثبيت الأيقونات الأساسية في اليمين داخل الحقل */
+        .input-group .input-icon { position: absolute; right: 15px; top: 50%; transform: translateY(-50%); color: #6e7681; font-size: 1rem; }
+        /* أيقونة العين لإظهار كلمة المرور في اليسار */
+        .input-group .toggle-pass { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #6e767e; cursor: pointer; }
+
+        /* تعديل اتجاه صف الخيارات لتظهر بشكل صحيح */
+        .options-row { display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; color: #8b949e; margin-bottom: 25px; direction: ltr; }
+        .options-row label { display: flex; align-items: center; gap: 6px; cursor: pointer; color: #8b949e; }
+        .options-row input[type="checkbox"] { accent-color: #2ea043; cursor: pointer; }
+        .options-row a { color: #4ee476; text-decoration: none; }
+        .options-row a:hover { text-decoration: underline; }
+
+        .btn-submit {
+            width: 100%; padding: 14px; background: linear-gradient(135deg, #238636 0%, #2ea043 100%);
+            color: #fff; border: none; border-radius: 12px; font-weight: 600; font-size: 1rem; cursor: pointer;
+            box-shadow: 0 4px 15px rgba(35, 134, 54, 0.4); transition: 0.3s;
+        }
+        .btn-submit:hover { opacity: 0.9; transform: translateY(-1px); }
+        .signup-text { margin-top: 25px; font-size: 0.9rem; color: #8b949e; }
+        .signup-text a { color: #4ee476; text-decoration: none; font-weight: 500; }
+        .signup-text a:hover { text-decoration: underline; }
+        .error-msg { color: #f85149; font-size: 0.85rem; margin-bottom: 15px; display: none; text-align: right; }
+    </style>
+</head>
+<body>
+
+    <div class="login-card">
+        <h2>Log in</h2>
+        
+        <div id="errorMsg" class="error-msg">البريد أو كلمة المرور غير صحيحة!</div>
+
+        <div>
+            <div class="input-group">
+                <i class="fa-solid fa-envelope input-icon"></i>
+                <input type="email" id="loginEmail" placeholder="Email Address">
+            </div>
+            
+            <div class="input-group">
+                <i class="fa-solid fa-lock input-icon"></i>
+                <input type="password" id="loginPass" placeholder="Password">
+                <i class="fa-solid fa-eye-slash toggle-pass" id="togglePassword"></i>
+            </div>
+
+            <div class="options-row">
+                <a href="#">Forgot Password?</a>
+                <label>Remember Me <input type="checkbox"></label>
+            </div>
+
+            <button type="button" id="loginBtn" class="btn-submit">Log in</button>
+        </div>
+
+        <div class="signup-text">
+            or <a href="signup.html">Sign up</a>
+        </div>
+    </div>
+
+    <script>
+        const SUPABASE_ANON_KEY = "sb_publishable_Z_A7NQrSg19SVV80FJquVQ_pxQJtRHq";
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var loginBtn = document.getElementById('loginBtn');
+            var togglePassword = document.getElementById('togglePassword');
+            var passwordInput = document.getElementById('loginPass');
+
+            if (togglePassword) {
+                togglePassword.addEventListener('click', function() {
+                    if (passwordInput.type === "password") {
+                        passwordInput.type = "text";
+                        this.classList.replace("fa-eye-slash", "fa-eye");
+                    } else {
+                        passwordInput.type = "password";
+                        this.classList.replace("fa-eye", "fa-eye-slash");
+                    }
+                });
+            }
+
+            if (loginBtn) {
+                loginBtn.addEventListener('click', function() {
+                    var email = document.getElementById('loginEmail').value.trim();
+                    var password = document.getElementById('loginPass').value.trim();
+                    var errorMsg = document.getElementById('errorMsg');
+
+                    if (email === "" || password === "") {
+                        if (errorMsg) {
+                            errorMsg.textContent = "الرجاء إدخال البريد وكلمة المرور!";
+                            errorMsg.style.display = "block";
+                        }
+                        return;
+                    }
+
+                    localStorage.setItem('shop_dz_logged', 'true');
+                    localStorage.setItem('supabase_key', SUPABASE_ANON_KEY);
+                    localStorage.setItem('user_email', email);
+
+                    window.location.href = "index.html";
+                });
+            }
+        });
+    </script>
+</body>
+</html>

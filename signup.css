@@ -1,0 +1,147 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: #090d0b;
+  background-image: radial-gradient(circle at 50% 30%, #11281a 0%, #090d0b 80%);
+  color: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.main-wrapper {
+  width: 100%;
+  max-width: 420px;
+}
+
+.card-container {
+  background-color: #101713;
+  border: 1px solid #1f3b28;
+  border-radius: 20px;
+  padding: 35px 28px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+.header-section {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.brand-logo {
+  width: 55px;
+  height: 55px;
+  background: #173220;
+  border: 1px solid #22c55e;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px;
+  color: #22c55e;
+  font-size: 24px;
+}
+
+.header-section h2 {
+  font-size: 22px;
+  color: #22c55e;
+  margin-bottom: 4px;
+}
+
+.header-section p {
+  font-size: 13px;
+  color: #9aa49e;
+}
+
+/* الحقول */
+.field-group {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.field-group input {
+  width: 100%;
+  background-color: #16221a;
+  border: 1px solid #223c2a;
+  border-radius: 10px;
+  padding: 13px 42px 13px 15px;
+  color: #fff;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.field-group input:focus {
+  border-color: #22c55e;
+}
+
+.field-group input::placeholder {
+  color: #617266;
+}
+
+.field-icon {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #22c55e;
+  font-size: 15px;
+}
+
+.toggle-eye {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #617266;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+/* زر التسجيل */
+.btn-primary {
+  width: 100%;
+  background-color: #22c55e;
+  color: #090d0b;
+  border: none;
+  border-radius: 10px;
+  padding: 13px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #1ea34d;
+}
+
+.btn-primary:disabled {
+  background-color: #44584a;
+  cursor: not-allowed;
+}
+
+/* رابط تسجيل الدخول */
+.footer-link {
+  text-align: center;
+  margin-top: 22px;
+  font-size: 13px;
+  color: #9aa49e;
+}
+
+.footer-link a {
+  color: #22c55e;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.footer-link a:hover {
+  text-decoration: underline;
+}
