@@ -454,7 +454,7 @@ nav a.active {
     transform: translateY(-3px);
 }
 .product-image img {
-    width: 100%;
+    width: 200%;
     height: 160px;
     object-fit: cover;
     border-radius: 8px;
