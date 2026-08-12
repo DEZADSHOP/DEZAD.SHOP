@@ -711,22 +711,28 @@ body {
     }
 }
 
-/* الهواتف الصغيرة */
-@media (max-width: 480px) {
-
-    .products {
-        grid-template-columns: 1fr;
+@media (max-width: 600px) {
+    /* استهدف الحاوية الرئيسية للمنتج */
+    .product-card {
+        display: flex;          /* ترتيب العناصر بجوار بعض */
+        align-items: center;    /* توسيط العناصر عمودياً */
+        gap: 15px;              /* مسافة بين الصورة والنص */
+        padding: 10px;
     }
 
-    h1 {
-        font-size: 27px;
+    /* هنا نجعل الصورة صغيرة جداً (أصغر بكثير) */
+    .phone-img {
+        width: 70px;            /* حجم صغير جداً ومناسب للأيقونات */
+        height: auto;
+        margin: 0;              /* إزالة التوسيط الجانبي */
     }
 
-    h2 {
-        font-size: 22px;
+    /* تنسيق النص ليكون مناسباً بجوار الصورة الصغيرة */
+    .product-info {
+        flex: 1;                /* ملء المساحة المتبقية */
     }
-
-    .search-box {
-        width: 92%;
+    
+    .product-title {
+        font-size: 16px;
     }
 }
