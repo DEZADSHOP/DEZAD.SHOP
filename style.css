@@ -572,97 +572,72 @@ footer small {
 
 /* ================= MOBILE ================= */
 
-@media(max-width: 900px) {
-
-    nav {
-        display: none;
-    }
-
-    .products-grid {
-        grid-template-columns:
-            repeat(2, 1fr);
-    }
-
-    .hero {
-        padding: 35px;
-    }
-
-}
-
-@media(max-width: 600px) {
-
-    .header {
-        flex-wrap: wrap;
-    }
-
-    .header-right {
-        width: 100%;
-    }
-
-    .search {
-        flex: 1;
-    }
-
-    .hero {
-        flex-direction: column;
-
-        text-align: center;
-
-        padding: 30px 15px;
-    }
-
-    .hero-text,
-    .hero-logo {
-        width: 100%;
-    }
-
-    .hero h1 {
-        font-size: 45px;
-    }
-
-    .hero-logo {
-        margin-top: 40px;
-    }
-
-    .circle {
-        width: 250px;
-        height: 250px;
-    }
-
-    .circle > div {
-        font-size: 80px;
-    }
-
-    .services {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .products-grid {
-        grid-template-columns: 1fr;
-    }
-
-}
-/* هذا الكود يطبق فقط على الشاشات التي يقل عرضها عن 768px (الهواتف) */
+/* هذا الكود يطبق فقط على شاشات الهواتف (أقل من 768px) */
 @media (max-width: 768px) {
     
-    /* استهداف زر الواتساب */
-    .whatsapp-btn, /* ضع هنا اسم الـ class الخاص بزر الواتساب لديك */
-    .product-card button { /* أو استهداف أي زر داخل بطاقة المنتج */
-        width: auto !important;     /* جعل الزر يأخذ حجم المحتوى فقط بدلاً من ملء الشاشة */
-        padding: 8px 12px !important; /* تصغير الحواف الداخلية للزر */
-        font-size: 14px !important;   /* تصغير حجم الخط داخل الزر */
+    /* تنسيق حاوية البطاقة الرئيسية */
+    .product-card {
+        display: flex;           /* تفعيل Flexbox */
+        flex-direction: row;     /* ترتيب العناصر بجوار بعضها أفقياً */
+        justify-content: space-between; /* توزيع المسافات بالتساوي بين العناصر */
+        align-items: center;     /* محاذاة العناصر في المنتصف عمودياً */
+        padding: 15px;           /* مسافة داخلية للبطاقة */
+        margin-bottom: 15px;     /* مسافة بين البطاقات */
+        width: 100%;             /* ملء عرض الشاشة */
+        box-sizing: border-box;  /* حساب الحواف ضمن العرض الكلي */
     }
 
-    /* ضبط حجم أيقونة الواتساب داخل الزر إذا كانت موجودة */
-    .whatsapp-btn img, 
-    .product-card button i {
-        width: 20px !important;  /* تصغير حجم الأيقونة */
-        height: auto !important;
-        margin-left: 5px !important; /* مسافة صغيرة بين الأيقونة والنص */
+    /* تنسيق زر الواتساب ليكون في اليسار */
+    .whatsapp-btn {
+        order: 1;                /* العنصر الأول في الترتيب */
+        margin: 0;               /* إزالة الهوامش */
+        width: 50px;             /* تحديد عرض ثابت للزر */
+        height: 50px;            /* تحديد طول ثابت للزر */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    /* تنسيق أيقونة الواتساب داخل الزر */
+    .whatsapp-btn i, 
+    .whatsapp-btn img {
+        font-size: 24px;         /* حجم الأيقونة */
+        width: auto;
+        margin: 0;
     }
 
-    /* التأكد من أن النصوص بجانب الزر لا يتم تغطيتها */
+    /* تنسيق حاوية النصوص (الاسم والسعر) في الوسط */
     .product-info {
-        flex: 1; /* جعل معلومات المنتج تأخذ المساحة المتبقية */
+        order: 2;                /* العنصر الثاني في الترتيب */
+        text-align: center;      /* توسيط النصوص */
+        flex: 1;                 /* جعلها تأخذ المساحة المتبقية */
+        margin: 0 10px;          /* مسافة جانبية بين الزر والصورة */
+    }
+
+    /* تنسيق اسم الهاتف */
+    .product-title {
+        font-size: 16px;
+        margin: 0 0 5px 0;
+    }
+
+    /* تنسيق السعر */
+    .product-price {
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    /* تنسيق صورة الهاتف لتكون في اليمين */
+    .product-image {
+        order: 3;                /* العنصر الثالث في الترتيب */
+        width: 80px;             /* تحديد عرض للصورة */
+        height: auto;            /* الحفاظ على تناسب الأبعاد */
+        margin: 0;               /* إزالة الهوامش */
+        object-fit: contain;     /* ضمان احتواء الصورة داخل الحجم المحدد */
+    }
+    
+    /* إذا كانت الصورة داخل حاوية إضافية، استهدفها أيضاً */
+    .product-image-container {
+        order: 3;
+        margin: 0;
     }
 }
