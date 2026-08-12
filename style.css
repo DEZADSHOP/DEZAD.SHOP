@@ -589,157 +589,38 @@ footer small {
 
 }
 
-@media(max-width: 600px) {
-
-    .header {
-        flex-wrap: wrap;
-    }
-
-    .header-right {
-        width: 100%;
-    }
-
-    .search {
-        flex: 1;
-    }
-
-    .hero {
-        flex-direction: column;
-
-        text-align: center;
-
-        padding: 30px 15px;
-    }
-
-    .hero-text,
-    .hero-logo {
-        width: 100%;
-    }
-
-    .hero h1 {
-        font-size: 45px;
-    }
-
-    .hero-logo {
-        margin-top: 40px;
-    }
-
-    .circle {
-        width: 250px;
-        height: 250px;
-    }
-
-    .circle > div {
-        font-size: 80px;
-    }
-
-    .services {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .products-grid {
-        grid-template-columns: 1fr;
-    }
-
-}
-/* =========================
-   تصميم الهواتف
-========================= */
-
-* {
-    box-sizing: border-box;
-}
-
-html, body {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
-}
-
-body {
-    margin: 0;
-}
-
-/* الحاوية الرئيسية */
-.container {
-    width: 100%;
-    max-width: 1200px;
-    margin: auto;
-    padding: 0 20px;
-}
-
-/* البحث */
-.search-box {
-    width: min(90%, 500px);
-    margin: 30px auto;
-}
-
-/* البطاقات */
-.products {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-}
-
-/* الهاتف */
 @media (max-width: 768px) {
-
-    .container {
-        width: 100%;
-        padding: 0 15px;
-    }
-
-    .products {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-    }
-
-    h1 {
-        font-size: 32px;
-    }
-
-    h2 {
-        font-size: 26px;
-    }
-
-    p {
-        font-size: 16px;
-    }
-
-    button {
-        max-width: 100%;
-    }
-}
-
-@media (max-width: 768px) {
-    
-    /* 1. جعل كل محتوى بطاقة المنتج يرتّب عمودياً من الأعلى للأسفل */
+    /* تنسيق حاوية البطاقة لجعل العناصر بجانب بعضها */
     .product-card {
         display: flex;
-        flex-direction: column !important; /* ترتيب عمودي يمنع التداخل */
-        align-items: center !important;    /* توسيط جميع العناصر في المنتصف */
-        text-align: center;
-        width: 90% !important;
-        margin: 15px auto !important;
+        flex-direction: row-reverse; /* لقلب الاتجاه وجعل الصورة في اليمين والزر في اليسار */
+        justify-content: space-between;
+        align-items: center;
         padding: 15px;
+        width: 95% !important;
+        margin: 10px auto !important;
+        box-sizing: border-box;
     }
 
-    /* 2. ضبط صورة الهاتف لتصبح في الأعلى وبحجم مناسب */
+    /* تنسيق صورة الهاتف لتكون بالحجم المناسب في اليمين */
     .product-card img, .phone-img {
-        width: 150px !important;           /* حجم مناسب غير ضخم */
+        width: 120px !important;
         height: auto !important;
-        margin-bottom: 10px;
+        object-fit: contain;
+        margin: 0;
     }
 
-    /* 3. جعل اسم الهاتف والسعر تحت الصورة بشكل مرتب */
-    .product-title, .product-price {
-        margin: 5px 0;
+    /* تنسيق قسم النصوص والسعر والاسم */
+    .product-info, .product-details {
+        text-align: right;
+        flex: 1;
+        margin: 0 15px;
     }
 
-    /* 4. إرجاع زر الشراء مكانه الصحيح تحتهما وعرضه بشكل جميل */
-    .product-card a, .product-card button {
-        width: 100% !important;            /* يأخذ عرض البطاقة بالكامل */
-        margin-top: 10px !important;
-        display: inline-block !important;
+    /* تنسيق زر الواتساب ليظهر في اليسار */
+    .product-card a.whatsapp-btn, .product-card button {
+        width: auto !important;
+        padding: 10px 15px;
+        margin: 0;
     }
 }
