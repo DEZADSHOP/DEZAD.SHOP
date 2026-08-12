@@ -745,3 +745,26 @@ img {
         max-width: 100%;
     }
 }
+/* إصلاح مربع البحث في الهاتف */
+.search-box {
+    position: relative;
+    z-index: 100;
+    width: 90%;
+    max-width: 500px;
+    margin: 20px auto;
+}
+
+.search-box input {
+    width: 100%;
+    height: 50px;
+    padding: 10px 50px 10px 15px;
+    font-size: 16px;
+    position: relative;
+    z-index: 101;
+}
+
+.search-box button {
+    position: relative;
+    z-index: 102;
+    cursor: pointer;
+}
