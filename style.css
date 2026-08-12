@@ -711,67 +711,35 @@ body {
     }
 }
 
-@media (max-width: 600px) {
-    /* استهدف الحاوية الرئيسية للمنتج */
-    .product-card {
-        display: flex;          /* ترتيب العناصر بجوار بعض */
-        align-items: center;    /* توسيط العناصر عمودياً */
-        gap: 15px;              /* مسافة بين الصورة والنص */
-        padding: 10px;
-    }
-
-    /* هنا نجعل الصورة صغيرة جداً (أصغر بكثير) */
-    .phone-img {
-        width: 70px;            /* حجم صغير جداً ومناسب للأيقونات */
-        height: auto;
-        margin: 0;              /* إزالة التوسيط الجانبي */
-    }
-
-    /* تنسيق النص ليكون مناسباً بجوار الصورة الصغيرة */
-    .product-info {
-        flex: 1;                /* ملء المساحة المتبقية */
-    }
-    
-    .product-title {
-        font-size: 16px;
-    }
-}
-/* إصلاح عام للشاشات الصغيرة (الهواتف) */
 @media (max-width: 768px) {
     
-    /* جعل حاوية المنتجات تظهر كعمود واحد مرتب */
-    .products-grid, .product-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-        padding: 10px;
-    }
-
-    /* تصغير بطاقة المنتج لتناسب شاشة الهاتف وعدم خروج العناصر */
+    /* 1. جعل كل محتوى بطاقة المنتج يرتّب عمودياً من الأعلى للأسفل */
     .product-card {
-        width: 95% !important;
-        max-width: 350px;
-        margin-bottom: 20px;
-        padding: 15px;
-        box-sizing: border-box;
-    }
-
-    /* تصغير صور الهواتف لتبدو مقبولة وليست ضخمة */
-    .product-card img, .phone-img {
-        width: 100% !important;
-        height: 200px !important; /* تثبيت ارتفاع مناسب للصورة */
-        object-fit: contain;      /* عدم تشوه الصورة */
-        display: block;
-        margin: 0 auto 10px auto;
-    }
-
-    /* إظهار زر الشراء وضبط مكانه لكي لا يختفي */
-    .product-card .buy-btn, .product-card button, .product-card a.whatsapp-btn {
-        display: block !important;
-        width: 100% !important;
+        display: flex;
+        flex-direction: column !important; /* ترتيب عمودي يمنع التداخل */
+        align-items: center !important;    /* توسيط جميع العناصر في المنتصف */
         text-align: center;
-        padding: 10px;
-        margin-top: 10px;
+        width: 90% !important;
+        margin: 15px auto !important;
+        padding: 15px;
+    }
+
+    /* 2. ضبط صورة الهاتف لتصبح في الأعلى وبحجم مناسب */
+    .product-card img, .phone-img {
+        width: 150px !important;           /* حجم مناسب غير ضخم */
+        height: auto !important;
+        margin-bottom: 10px;
+    }
+
+    /* 3. جعل اسم الهاتف والسعر تحت الصورة بشكل مرتب */
+    .product-title, .product-price {
+        margin: 5px 0;
+    }
+
+    /* 4. إرجاع زر الشراء مكانه الصحيح تحتهما وعرضه بشكل جميل */
+    .product-card a, .product-card button {
+        width: 100% !important;            /* يأخذ عرض البطاقة بالكامل */
+        margin-top: 10px !important;
+        display: inline-block !important;
     }
 }
