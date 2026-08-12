@@ -642,38 +642,27 @@ footer small {
     }
 
 }
-/* إصلاح عام للشاشات الصغيرة (الهواتف) */@media (max-width: 768px) {
-    /* تنسيق حاوية البطاقة لجعل العناصر بجانب بعضها */
-    .product-card {
-        display: flex;
-        flex-direction: row-reverse; /* لقلب الاتجاه وجعل الصورة في اليمين والزر في اليسار */
-        justify-content: space-between;
-        align-items: center;
-        padding: 15px;
-        width: 95% !important;
-        margin: 10px auto !important;
-        box-sizing: border-box;
+/* هذا الكود يطبق فقط على الشاشات التي يقل عرضها عن 768px (الهواتف) */
+@media (max-width: 768px) {
+    
+    /* استهداف زر الواتساب */
+    .whatsapp-btn, /* ضع هنا اسم الـ class الخاص بزر الواتساب لديك */
+    .product-card button { /* أو استهداف أي زر داخل بطاقة المنتج */
+        width: auto !important;     /* جعل الزر يأخذ حجم المحتوى فقط بدلاً من ملء الشاشة */
+        padding: 8px 12px !important; /* تصغير الحواف الداخلية للزر */
+        font-size: 14px !important;   /* تصغير حجم الخط داخل الزر */
     }
 
-    /* تنسيق صورة الهاتف لتكون بالحجم المناسب في اليمين */
-    .product-card img, .phone-img {
-        width: 120px !important;
+    /* ضبط حجم أيقونة الواتساب داخل الزر إذا كانت موجودة */
+    .whatsapp-btn img, 
+    .product-card button i {
+        width: 20px !important;  /* تصغير حجم الأيقونة */
         height: auto !important;
-        object-fit: contain;
-        margin: 0;
+        margin-left: 5px !important; /* مسافة صغيرة بين الأيقونة والنص */
     }
 
-    /* تنسيق قسم النصوص والسعر والاسم */
-    .product-info, .product-details {
-        text-align: right;
-        flex: 1;
-        margin: 0 15px;
-    }
-
-    /* تنسيق زر الواتساب ليظهر في اليسار */
-    .product-card a.whatsapp-btn, .product-card button {
-        width: auto !important;
-        padding: 10px 15px;
-        margin: 0;
+    /* التأكد من أن النصوص بجانب الزر لا يتم تغطيتها */
+    .product-info {
+        flex: 1; /* جعل معلومات المنتج تأخذ المساحة المتبقية */
     }
 }
