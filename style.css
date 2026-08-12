@@ -454,8 +454,8 @@ nav a.active {
     transform: translateY(-3px);
 }
 .product-image img {
-    width: 200%;
-    height: 160px;
+    width: 300%;
+    height: 500px;
     object-fit: cover;
     border-radius: 8px;
     background: #1f1f1f;
@@ -589,7 +589,60 @@ footer small {
 
 }
 
-@media (max-width: 768px) {
+@media(max-width: 600px) {
+
+    .header {
+        flex-wrap: wrap;
+    }
+
+    .header-right {
+        width: 100%;
+    }
+
+    .search {
+        flex: 1;
+    }
+
+    .hero {
+        flex-direction: column;
+
+        text-align: center;
+
+        padding: 30px 15px;
+    }
+
+    .hero-text,
+    .hero-logo {
+        width: 100%;
+    }
+
+    .hero h1 {
+        font-size: 45px;
+    }
+
+    .hero-logo {
+        margin-top: 40px;
+    }
+
+    .circle {
+        width: 250px;
+        height: 250px;
+    }
+
+    .circle > div {
+        font-size: 80px;
+    }
+
+    .services {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+/* إصلاح عام للشاشات الصغيرة (الهواتف) */@media (max-width: 768px) {
     /* تنسيق حاوية البطاقة لجعل العناصر بجانب بعضها */
     .product-card {
         display: flex;
