@@ -572,42 +572,25 @@ footer small {
 
 /* ================= MOBILE ================= */
 @media (max-width: 768px) {
-    
-    /* 1. جعل قسم الترحيب يترتب عمودياً وبشكل متناسق وسط الشاشة */
-    .hero-section, /* استبدل هذا بالاسم الموجود لديك للحاوية الكبرى */
-    header + div {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        padding: 20px 10px;
-        width: 100%;
-        box-sizing: border-box;
+    /* 1. جعل الصفحة بأكملها تأخذ عرض شاشة الهاتف بالكامل وتمنع التمرير العرضي */
+    html, body {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow-x: hidden !important;
+        margin: 0 !important;
+        padding: 0 !important;
     }
 
-    /* 2. تصغير حجم الشعار (حرف D الدائري) لكي لا يتداخل مع الكلام */
-    .logo, .logo-icon {
-        width: 80px !important;
-        height: 80px !important;
-        font-size: 40px !important;
-        margin-bottom: 15px;
-    }
-
-    /* 3. تصغير أحجام الخطوط العناوين الرئيسية الضخمة في الهاتف */
-    h1, .hero-title {
-        font-size: 28px !important; /* تصغير الخط ليناسب الشاشة */
-        line-height: 1.4;
-        margin: 10px 0;
-    }
-
-    h2, .hero-subtitle {
-        font-size: 20px !important;
-        margin: 5px 0;
-    }
-
-    /* 4. ضبط النصوص العادية والوصف */
-    p, .hero-desc {
-        font-size: 14px !important;
-        padding: 0 10px;
+    /* 2. ضبط الحاوية الكبرى (Container) لتملأ الهاتف ولا تنضغط في اليمين */
+    .container, 
+    .main-container, 
+    header, 
+    section, 
+    footer {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
     }
 }
