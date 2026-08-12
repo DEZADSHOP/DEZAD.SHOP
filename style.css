@@ -736,23 +736,42 @@ body {
         font-size: 16px;
     }
 }
-@media (max-width: 600px) {
-    /* 1. تصغير حجم بطاقة المنتج بالكامل */
+/* إصلاح عام للشاشات الصغيرة (الهواتف) */
+@media (max-width: 768px) {
+    
+    /* جعل حاوية المنتجات تظهر كعمود واحد مرتب */
+    .products-grid, .product-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        padding: 10px;
+    }
+
+    /* تصغير بطاقة المنتج لتناسب شاشة الهاتف وعدم خروج العناصر */
     .product-card {
-        width: 90%;          /* ستأخذ 90% من عرض شاشة الهاتف */
-        margin: 10px auto;   /* توسيط البطاقة */
+        width: 95% !important;
+        max-width: 350px;
+        margin-bottom: 20px;
+        padding: 15px;
+        box-sizing: border-box;
     }
 
-    /* 2. التحكم في حجم صورة الهاتف داخل البطاقة */
-    .product-card img {
-        width: 150px;        /* يمكنك تغيير الرقم (مثلاً 150px أو 200px) ليناسبك */
-        height: auto;        /* الحفاظ على تناسق الصورة */
+    /* تصغير صور الهواتف لتبدو مقبولة وليست ضخمة */
+    .product-card img, .phone-img {
+        width: 100% !important;
+        height: 200px !important; /* تثبيت ارتفاع مناسب للصورة */
+        object-fit: contain;      /* عدم تشوه الصورة */
         display: block;
-        margin: 0 auto;      /* توسيط الصورة */
+        margin: 0 auto 10px auto;
     }
 
-    /* 3. تصغير الخطوط في الهاتف لتناسب المساحة */
-    .product-title {
-        font-size: 16px;
+    /* إظهار زر الشراء وضبط مكانه لكي لا يختفي */
+    .product-card .buy-btn, .product-card button, .product-card a.whatsapp-btn {
+        display: block !important;
+        width: 100% !important;
+        text-align: center;
+        padding: 10px;
+        margin-top: 10px;
     }
 }
