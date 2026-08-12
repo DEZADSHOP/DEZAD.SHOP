@@ -642,16 +642,91 @@ footer small {
     }
 
 }
-/* هذا الكود يطبق فقط على الشاشات الصغيرة (الهواتف) */
+/* =========================
+   تصميم الهواتف
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    margin: 0;
+}
+
+/* الحاوية الرئيسية */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+/* البحث */
+.search-box {
+    width: min(90%, 500px);
+    margin: 30px auto;
+}
+
+/* البطاقات */
+.products {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+/* الهاتف */
 @media (max-width: 768px) {
-    /* هنا نغير أحجام الخطوط أو ترتيب العناصر */
-    body {
-        font-size: 14px; /* تصغير الخط قليلاً ليناسب الهاتف */
-    }
-    
+
     .container {
-        width: 90%; /* نجعل المحتوى يأخذ مساحة أكبر من شاشة الهاتف */
+        width: 100%;
+        padding: 0 15px;
     }
 
-    /* يمكنك هنا التحكم في أي عنصر تراه "كبيراً جداً" في الهاتف */
+    .products {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    h1 {
+        font-size: 32px;
+    }
+
+    h2 {
+        font-size: 26px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+
+    button {
+        max-width: 100%;
+    }
+}
+
+/* الهواتف الصغيرة */
+@media (max-width: 480px) {
+
+    .products {
+        grid-template-columns: 1fr;
+    }
+
+    h1 {
+        font-size: 27px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    .search-box {
+        width: 92%;
+    }
 }
