@@ -1,43 +1,129 @@
+/* ================================================= */
+/* تنسيقات متجر ديزاد شوب (DEZAD SHOP) - نسخة مطابقة للصورة */
+/* ================================================= */
+
+body {
+    background-color: #0d0d0d;
+    color: #ffffff;
+    font-family: 'Cairo', sans-serif;
+    margin: 0;
+    padding-bottom: 80px; /* مساحة لشريط التنقل السفلي */
+    direction: rtl;
+}
+
+/* شريط التنقل السفلي الثابت */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #121212;
+    border-top: 1px solid #222;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    z-index: 1000;
+}
+
+.bottom-nav a {
+    color: #888;
+    text-decoration: none;
+    font-size: 11px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.bottom-nav a.active {
+    color: #00e676;
+}
+
+/* التجاوب والتنسيق الشامل للشاشات والهواتف */
 @media screen and (max-width: 768px) {
     
-    /* الحفاظ على عرض العناصر بجانب بعضها في قسم الترحيب */
+    /* 1. قسم الترحيب (الشعار على اليسار والنص على اليمين تماماً مثل الصورة) */
     .hero-section {
         display: flex !important;
-        flex-direction: row !important; /* جعل العناصر أفقية جنباً إلى جنب */
+        flex-direction: row !important;
         justify-content: space-between !important;
         align-items: center !important;
+        background-color: #141414;
+        border: 1px solid #222;
+        border-radius: 16px;
+        padding: 15px !important;
+        margin: 10px;
         text-align: right !important;
-        padding: 10px !important;
     }
 
-    /* تصغير النصوص قليلاً لتناسب عرض شاشة الهاتف وهي بجانب الشعار */
+    .hero-text {
+        flex: 1;
+        padding-left: 10px;
+    }
+
     .hero-text h1 {
-        font-size: 18px !important;
-        line-height: 1.2 !important;
+        font-size: 17px !important;
+        line-height: 1.3 !important;
+        margin: 5px 0;
     }
 
     .hero-text p {
-        font-size: 11px !important;
-        margin-bottom: 10px !important;
+        font-size: 10px !important;
+        color: #aaa;
+        margin-bottom: 10px;
     }
 
     .shop-now-btn {
-        padding: 8px 15px !important;
-        font-size: 12px !important;
+        background-color: #00e676 !important;
+        color: #000 !important;
+        padding: 6px 15px !important;
+        font-size: 11px !important;
+        border-radius: 20px;
+        font-weight: bold;
+        text-decoration: none;
+        display: inline-block;
     }
 
-    /* تصغير دائرة الشعار لكي توضع بجانب النص بشكل مناسب على الموبايل */
+    /* دائرة الشعار الكبيرة على اليسار */
     .logo-circle {
-        width: 120px !important;
-        height: 120px !important;
-        margin: 0 !important;
+        width: 110px !important;
+        height: 110px !important;
+        border: 2px solid #00e676;
+        border-radius: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 0 15px rgba(0, 230, 118, 0.2);
+        flex-shrink: 0;
     }
 
     .logo-circle .large-D {
-        font-size: 50px !important;
+        font-size: 45px !important;
+        color: #00e676;
+        font-weight: bold;
+        line-height: 1;
     }
 
     .logo-circle .circle-text {
-        font-size: 14px !important;
+        font-size: 11px !important;
+        font-weight: bold;
+        margin-top: 2px;
+    }
+
+    /* 2. مربعات الميزات الأربع (دعم، شحن، ضمان، عروض) */
+    .features-grid, .cards-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 8px !important;
+        padding: 0 10px 10px 10px !important;
+    }
+
+    /* 3. شبكة عرض الهواتف */
+    .products-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px !important;
+        padding: 10px !important;
     }
 }
