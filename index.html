@@ -1,167 +1,118 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
 
+ <!DOCTYPE html>
+<html lang="ar" dir="rtl">
 <head>
-   <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ديزاد شوب | DEZAD SHOP</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="manifest" href="manifest.json">
+    <title>DEZA SHOP | متجر الهواتف الأول في الجزائر</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="main.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
-<!-- ================= HEADER ================= -->
-<header class="header">
-    <div class="logo">
-        <div class="logo-icon">DZ</div>
-        <div>
-            <h2>ديزاد شوب</h2>
-            <span>DEZAD SHOP</span>
+    <!-- شريط معلومات علوي (جيميل ورقم الهاتف) -->
+    <div class="top-bar">
+        <div class="top-bar-content">
+            <div class="contact-info">
+                <a href="mailto:dezashop.contact@gmail.com"><i class="fas fa-envelope"></i> dezashop.contact@gmail.com</a>
+                <a href="https://wa.me/+21355754317" target="_blank"><i class="fab fa-whatsapp"></i> +213 XXXXXXXXX</a>
+            </div>
+            <div class="location-info">
+                <span><i class="fas fa-map-marker-alt"></i> الجزائر</span>
+            </div>
         </div>
     </div>
 
-    <nav>
-        <a href="index.html" class="active">الرئيسية</a>
-        <a href="#products">الهواتف</a>
-        <a href="#offers">العروض</a>
-      
-        <a href="#contact">اتصل بنا</a>
-         </button>
-
-        <!-- زر الخروج أو الذهاب للتسجيل -->
-        <a href="signup.html" id="logoutBtn" class="logout" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; background-color: #1f1f1f; color: #00e676; border: 1px solid #00e676; padding: 8px 15px; border-radius: 8px; font-weight: bold; transition: 0.2s;">
-            خروج
-        </a>
-    </div>
-</header>
-    </nav>
-
-    <div class="search-container">
-    <div class="search-box">
-        <!-- زر أو كلمة بحث في الجهة اليمنى -->
-        <button id="searchBtn">بحث</button>
-        
-        <!-- حقل الكتابة -->
-         <input
-    type="text"
-    id="searchInput"
-    placeholder="ابحث عن هاتف..."
->
-        <!-- أيقونة البحث في الجهة اليسرى -->
-        <i class="fa-solid fa-magnifying-glass search-icon"></i>
-    </div>
-</div>
-
-<style>
-/* تنسيق شريط البحث ليتطابق تماماً مع الصورة الثانية */
-.search-container {
-    width: 100%;
-    max-width: 280px; /* تصغير العرض الأقصى لشريط البحث */
-    margin: 0 10px;
-}
-
-.search-box {
-    display: flex;
-    align-items: center;
-    background-color: #121212;
-    border: 2px solid #00ff66;
-    border-radius: 30px;
-    padding: 3px 10px; /* تقليل الحشو الداخلي ليصبح أصغر ارتفاعاً */
-    box-shadow: 0 0 8px rgba(0, 255, 102, 0.2);
-}
-
-.search-box input {
-    flex: 1;
-    background: transparent;
-    border: none;
-    outline: none;
-    color: #fff;
-    font-size: 14px; /* تصغير خط الكتابة قليلاً */
-    padding: 4px 8px;
-    text-align: right;
-}
-
-.search-box input::placeholder {
-    color: #777;
-}
-
-.search-box button {
-    background-color: #00ff66;
-    color: #000;
-    border: none;
-    padding: 5px 14px; /* تصغير زر البحث */
-    border-radius: 20px;
-    font-weight: bold;
-    font-size: 13px;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.search-box button:hover {
-    background-color: #00cc52;
-}
-
-.search-box .search-icon {
-    color: #fff;
-    font-size: 15px;
-    margin-left: 8px;
-    cursor: pointer;
-}
-</style>
-
-     
-           
-      
-
-<!-- ================= HERO ================= -->
-
-    </div>
-
-    
+    <!-- الهيدر وقائمة التنقل -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">DEZA <span>SHOP</span></a>
+            <nav class="nav-links">
+                <a href="#">الرئيسية</a>
+                <a href="#products">الهواتف</a>
+                <a href="#categories">الأقسام</a>
+                <a href="#contact">اتصل بنا</a>
+            </nav>
         </div>
-    </div>
-</section>
+    </header>
 
-<!-- ================= SERVICES ================= -->
+    <!-- الواجهة الرئيسية (Hero) -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>أحدث الهواتف الذكية بأسعار <span>ديزاد</span></h1>
+            <p>تسوق أفضل الهواتف في الجزائر مع ضمان حقيقي وتوصيل سريع لكافة الولاية</p>
+            <a href="#products" class="btn-primary">تصفح الهواتف الآن</a>
+        </div>
+    </section>
 
+    <!-- قسم الهواتف (يتم جلبها من Supabase) -->
+    <section id="products" class="section-container">
+        <div class="section-header">
+            <h2>قائمة <span>الهواتف</span></h2>
+            <div class="line"></div>
+        </div>
+        <div id="productsGrid" class="products-grid">
+            <!-- سيتم تحميل الهواتف هنا ديناميكياً عبر الجافاسكريبت -->
+        </div>
+    </section>
 
-<!-- ================= PRODUCTS ================= -->
-<section class="products-section" id="products">
-    <div class="section-title">
-        <span></span>
-        <h2>أحدث <strong>الهواتف</strong></h2>
-        <span></span>
-    </div>
+    <!-- قسم الأقسام -->
+    <section id="categories" class="section-container">
+        <div class="section-header">
+            <h2>أقسام <span>المتجر</span></h2>
+            <div class="line"></div>
+        </div>
+        <div class="categories-grid">
+            <div class="category-card">
+                <i class="fas fa-mobile-alt"></i>
+                <h3>هواتف ذكية</h3>
+            </div>
+            <div class="category-card">
+                <i class="fas fa-headphones"></i>
+                <h3>إكسسوارات</h3>
+            </div>
+        </div>
+    </section>
 
-    <!-- حاوية الهواتف التي سيتم جلبها وعرضها برمجياً -->
-    <div id="productsContainer" class="products-grid"></div>
+    <!-- الفوتر (قسم اتصل بنا ومعلومات الموقع) -->
+    <footer id="contact">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h3>DEZA <span>SHOP</span></h3>
+                <p>متجرك الأول في الجزائر لتوفير أحدث الهواتف الذكية بأفضل الأسعار وأعلى جودة.</p>
+                <div class="social-links">
+                    <a href="https://facebook.com/yourpage" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://instagram.com/yourprofile" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/+21355754317" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://t.me/yourchannel" target="_blank"><i class="fab fa-telegram-plane"></i></a>
+                </div>
+            </div>
 
-    <!-- رسالة تظهر عندما لا توجد منتجات -->
-    <div id="emptyProducts" class="empty-products" style="display: none;">
-        <div class="empty-icon">📱</div>
-        <h2>لا توجد هواتف حالياً</h2>
-        <p>سيتم عرض المنتجات هنا عند إضافتها.</p>
-    </div>
-</section>
+            <div class="footer-col">
+                <h4>روابط سريعة</h4>
+                <ul>
+                    <li><a href="#">الرئيسية</a></li>
+                    <li><a href="#products">الهواتف</a></li>
+                    <li><a href="#categories">الأقسام</a></li>
+                    <li><a href="#contact">اتصل بنا</a></li>
+                </ul>
+            </div>
 
-<!-- ================= FOOTER ================= -->
-<footer id="contact">
-    <h2>ديزاد شوب</h2>
-    <span>DEZAD SHOP</span>
-    <p>متجرك الإلكتروني للهواتف الذكية</p>
-    <small>© 2026 DEZAD SHOP</small>
-</footer>
+            <div class="footer-col">
+                <h4>تواصل معنا</h4>
+                <ul class="contact-details">
+                    <li><i class="fas fa-map-marker-alt"></i> الجزائر العاصمة، الجزائر</li>
+                    <li><i class="fas fa-phone-alt"></i> +21355754317</li>
+                    <li><i class="fas fa-envelope"></i> dezashop.contact@gmail.com</li>
+                </ul>
+            </div>
+        </div>
 
-<script src="search.js"></script>
+        <div class="footer-bottom">
+            <p>جميع الحقوق محفوظة &copy; 2026 <span>DEZA SHOP</span></p>
+        </div>
+    </footer>
 
-<!-- 1. استدعاء مكتبة Supabase أولاً -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-<!-- 2. استدعاء ملف الـ JavaScript الخاص بك -->
-<script src="java.js"></script>
-
+    <script src="script.js"></script>
 </body>
 </html>
