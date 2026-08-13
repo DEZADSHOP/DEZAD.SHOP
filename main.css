@@ -1,28 +1,69 @@
-/* التصميم الأساسي الخاص بالشاشات الكبيرة (حواسيب) */
+/* ================================================= */
+/* تنسيقات متجر ديزاد شوب (DEZAD SHOP) - الهواتف    */
+/* ================================================= */
+
 body {
-    font-size: 16px;
+    background-color: #0d0d0d;
+    color: #ffffff;
+    font-family: 'Cairo', sans-serif;
+    margin: 0;
+    padding-bottom: 70px; /* مساحة لشريط التنقل السفلي الثابت */
+    direction: rtl;
 }
 
-.hero-section {
+/* شريط التنقل السفلي الثابت (Bottom Nav Bar) */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #161616;
+    border-top: 1px solid #222;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: space-around;
+    padding: 10px 0;
+    z-index: 1000;
 }
 
-/* التعديلات التلقائية عندما تصبح الشاشة بحجم الهاتف (أقل من 768 بكسل) */
+.bottom-nav a {
+    color: #888;
+    text-decoration: none;
+    font-size: 11px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.bottom-nav a.active {
+    color: #00e676;
+}
+
+/* التجاوب التلقائي للشاشات الصغيرة */
 @media screen and (max-width: 768px) {
     .hero-section {
-        flex-direction: column; /* جعل العناصر تظهر تحت بعضها بدلاً من الجانب */
+        display: flex;
+        flex-direction: column-reverse; /* الشعار في الأسفل والنص في الأعلى */
+        align-items: center;
         text-align: center;
+        padding: 15px;
     }
     
     h1 {
-        font-size: 24px; /* تصغير عنوان الموقع ليناسب شاشة الهاتف الضيقة */
+        font-size: 22px;
     }
     
     .logo-circle {
-        width: 150px; /* تصغير حجم دائرة الشعار لتناسب الموبايل */
+        width: 150px;
         height: 150px;
-        margin: 0 auto; /* لضمان توسيط الدائرة في منتصف الشاشة تلقائياً */
+        margin: 10px auto;
+    }
+
+    /* تنسيق الميزات الأربع بجانب بعضها أو شبكية */
+    .features-grid, .cards-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        padding: 10px;
     }
 }
