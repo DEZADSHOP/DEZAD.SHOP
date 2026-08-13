@@ -1,69 +1,43 @@
-/* ================================================= */
-/* تنسيقات متجر ديزاد شوب (DEZAD SHOP) - الهواتف    */
-/* ================================================= */
-
-body {
-    background-color: #0d0d0d;
-    color: #ffffff;
-    font-family: 'Cairo', sans-serif;
-    margin: 0;
-    padding-bottom: 70px; /* مساحة لشريط التنقل السفلي الثابت */
-    direction: rtl;
-}
-
-/* شريط التنقل السفلي الثابت (Bottom Nav Bar) */
-.bottom-nav {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: #161616;
-    border-top: 1px solid #222;
-    display: flex;
-    justify-content: space-around;
-    padding: 10px 0;
-    z-index: 1000;
-}
-
-.bottom-nav a {
-    color: #888;
-    text-decoration: none;
-    font-size: 11px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-}
-
-.bottom-nav a.active {
-    color: #00e676;
-}
-
-/* التجاوب التلقائي للشاشات الصغيرة */
 @media screen and (max-width: 768px) {
+    
+    /* الحفاظ على عرض العناصر بجانب بعضها في قسم الترحيب */
     .hero-section {
-        display: flex;
-        flex-direction: column-reverse; /* الشعار في الأسفل والنص في الأعلى */
-        align-items: center;
-        text-align: center;
-        padding: 15px;
-    }
-    
-    h1 {
-        font-size: 22px;
-    }
-    
-    .logo-circle {
-        width: 150px;
-        height: 150px;
-        margin: 10px auto;
+        display: flex !important;
+        flex-direction: row !important; /* جعل العناصر أفقية جنباً إلى جنب */
+        justify-content: space-between !important;
+        align-items: center !important;
+        text-align: right !important;
+        padding: 10px !important;
     }
 
-    /* تنسيق الميزات الأربع بجانب بعضها أو شبكية */
-    .features-grid, .cards-container {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-        padding: 10px;
+    /* تصغير النصوص قليلاً لتناسب عرض شاشة الهاتف وهي بجانب الشعار */
+    .hero-text h1 {
+        font-size: 18px !important;
+        line-height: 1.2 !important;
+    }
+
+    .hero-text p {
+        font-size: 11px !important;
+        margin-bottom: 10px !important;
+    }
+
+    .shop-now-btn {
+        padding: 8px 15px !important;
+        font-size: 12px !important;
+    }
+
+    /* تصغير دائرة الشعار لكي توضع بجانب النص بشكل مناسب على الموبايل */
+    .logo-circle {
+        width: 120px !important;
+        height: 120px !important;
+        margin: 0 !important;
+    }
+
+    .logo-circle .large-D {
+        font-size: 50px !important;
+    }
+
+    .logo-circle .circle-text {
+        font-size: 14px !important;
     }
 }
