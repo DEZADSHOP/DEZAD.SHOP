@@ -1,0 +1,26 @@
+/* التصميم الأساسي الخاص بالشاشات الكبيرة (حواسيب) */
+body {
+    font-size: 16px;
+}
+.hero-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* التعديلات التلقائية عندما تصبح الشاشة بحجم الهاتف (أقل من 768 بكسل) */
+@media screen and (max-width: 768px) {
+    .hero-section {
+        flex-direction: column; /* جعل العناصر تظهر تحت بعضها بدلاً من الجانب */
+        text-align: center;
+    }
+    
+    h1 {
+        font-size: 24px; /* تصغير عنوان الموقع ليناسب شاشة الهاتف الضيقة */
+    }
+    
+    .logo-circle {
+        width: 150px; /* تصغير حجم دائرة الشعار لتناسب الموبايل */
+        height: 150px;
+    }
+}
