@@ -1,7 +1,7 @@
 // بيانات الاتصال بقاعدة بيانات Supabase الخاصة بك
 const SUPABASE_URL = "https://qbduokaisfafdkuzkfuv.supabase.co";
 const SUPABASE_KEY = "sb_publishable_Z_A7NQrSg19SVV80FJquVQ_pxQJtRHq";
-const WHATSAPP_NUMBER = "+21355754317"; // استبدل X برقم هاتفك الحقيقي (مثال: 213612345678)
+const WHATSAPP_NUMBER = "+213551754317"; // استبدل X برقم هاتفك الحقيقي (مثال: 213612345678)
 
 async function fetchPhones() {
     try {
