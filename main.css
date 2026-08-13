@@ -2,6 +2,7 @@
 body {
     font-size: 16px;
 }
+
 .hero-section {
     display: flex;
     justify-content: space-between;
@@ -22,5 +23,6 @@ body {
     .logo-circle {
         width: 150px; /* تصغير حجم دائرة الشعار لتناسب الموبايل */
         height: 150px;
+        margin: 0 auto; /* لضمان توسيط الدائرة في منتصف الشاشة تلقائياً */
     }
 }
