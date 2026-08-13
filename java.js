@@ -1,99 +1,54 @@
-// ==========================================
-// DEZA SHOP - MAIN SCRIPT
-// ==========================================
+// بيانات الاتصال بقاعدة بيانات Supabase الخاصة بك
+const SUPABASE_URL = "https://qbduokaisfafdkuzkfuv.supabase.co";
+const SUPABASE_KEY = "sb_publishable_Z_A7NQrSg19SVV80FJquVQ_pxQJtRHq";
+const WHATSAPP_NUMBER = "+21355754317"; // استبدل X برقم هاتفك الحقيقي (مثال: 213612345678)
 
-// 1. إعداد الاتصال بـ Supabase
-const SUPABASE_URL = 'https://qbduokaisfafdkuzkfuv.supabase.co';
-const SUPABASE_KEY = 'sb_publishable_Z_A7NQrSg19SVV80FJquVQ_pxQJtRHq';
-const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-
-
-// 2. دالة جلب وعرض الهواتف
-async function loadPhones() {
-    const container = document.getElementById('productsContainer');
-    const emptyMsg = document.getElementById('emptyProducts');
-
+async function fetchPhones() {
     try {
-        const { data: phones, error } = await supabaseClient
-            .from('phones')
-            .select('*');
-
-        if (error) throw error;
-
-        container.innerHTML = ''; // تنظيف الحاوية
-
-        if (!phones || phones.length === 0) {
-            emptyMsg.style.display = 'block';
-        } else {
-            emptyMsg.style.display = 'none';
-            phones.forEach(phone => {
-                const phoneCard = `
-                    <div class="product-card">
-                        <img src="${phone.image_url}" alt="${phone.name}">
-                        <h3>${phone.name}</h3>
-                        <p class="price">${phone.price} دج</p>
-                        
-                        <button class="buy-button"><a href="https://wa.me/213551754317?text=مرحباً، أود الاستفسار عن شراء هذا المنتج" target="_blank" style="display: inline-flex; align-items: center; justify-content: center; background-color: #25D366; color: #ffffff; padding: 10px 20px; font-size: 16px; font-weight: bold; border-radius: 8px; text-decoration: none; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width: 20px; height: 20px; margin-left: 8px;">
-    شراء الآن
-</a></button>
-                    </div>
-                `;
-                container.innerHTML += phoneCard;
-            });
-        }
-    } catch (err) {
-        console.error("خطأ في جلب البيانات:", err);
-    }
-}
-
-// 3. تشغيل الدالة عند تحميل الصفحة
-document.addEventListener("DOMContentLoaded", () => {
-    loadPhones();
-});
-
-// دالة للانتقال لقسم المنتجات
-function goToProducts() {
-    document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
-}
-document.addEventListener("DOMContentLoaded", () => {
-    const searchInput = document.getElementById("searchInput");
-    const searchBtn = document.getElementById("searchBtn");
-
-    function performSearch() {
-        const searchInput = document.querySelector("#searchInput");
-
-searchInput.addEventListener("input", function () {
-    const searchText = this.value.toLowerCase().trim();
-
-    const products = document.querySelectorAll(".product-card");
-
-    products.forEach(product => {
-        const productText = product.textContent.toLowerCase();
-
-        if (productText.includes(searchText)) {
-            product.style.display = "";
-        } else {
-            product.style.display = "none";
-        }
-    });
-});
-    }
-
-    // البحث عند الضغط على زر "بحث"
-    if (searchBtn) {
-        searchBtn.addEventListener("click", performSearch);
-    }
-
-    // البحث مباشرة أثناء الكتابة (اختياري)
-    if (searchInput) {
-        searchInput.addEventListener("input", performSearch);
-        
-        // البحث أيضاً عند الضغط على مفتاح Enter من لوحة المفاتيح
-        searchInput.addEventListener("keypress", (e) => {
-            if (e.key === "Enter") {
-                performSearch();
+        const response = await fetch(`${SUPABASE_URL}/rest/v1/phones?select=*`, {
+            headers: {
+                "apikey": SUPABASE_KEY,
+                "Authorization": `Bearer ${SUPABASE_KEY}`
             }
         });
+        
+        if (!response.ok) {
+            throw new Error('فشل في جلب البيانات من قاعدة البيانات');
+        }
+
+        const phones = await response.json();
+        const grid = document.getElementById('productsGrid');
+        grid.innerHTML = '';
+
+        if (phones.length === 0) {
+            grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #888; padding: 40px;">لا توجد هواتف متوفرة حالياً في المتجر</p>';
+            return;
+        }
+
+        phones.forEach(phone => {
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            
+            // رابط الواتساب المباشر مع رسالة جاهزة باسم الهاتف والسعر
+            const whatsappMsg = encodeURIComponent(`مرحباً DEZA SHOP، أريد الاستفسار وشراء هاتف ${phone.name} بسعر ${phone.price} دج`);
+            const whatsappLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${whatsappMsg}`;
+
+            card.innerHTML = `
+                <img src="${phone.image_url}" alt="${phone.name}">
+                <h3>${phone.name}</h3>
+                <div class="price">${phone.price} دج</div>
+                <a href="${whatsappLink}" class="buy-btn" target="_blank">
+                    اشتري الآن <i class="fab fa-whatsapp"></i>
+                </a>
+            `;
+            grid.appendChild(card);
+        });
+    } catch (error) {
+        console.error("خطأ:", error);
+        const grid = document.getElementById('productsGrid');
+        grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #e74c3c; padding: 40px;">حدث خطأ أثناء تحميل الهواتف. تأكد من صحة اسم الجدول في Supabase (يجب أن يكون باسم phones)</p>';
     }
-});
+}
+
+// تنفيذ الجلب عند تحميل الصفحة
+document.addEventListener("DOMContentLoaded", fetchPhones);
