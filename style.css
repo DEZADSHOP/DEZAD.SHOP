@@ -973,71 +973,45 @@ body {
         display: inline-block;
     }
 
-    /* دائرة الشعار الكبيرة على اليسار */
-    .logo-circle {
-        width: 110px !important;
-        height: 110px !important;
-        border: 2px solid #00e676;
-        border-radius: 50%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        box-shadow: 0 0 15px rgba(0, 230, 118, 0.2);
-        flex-shrink: 0;
-    }
+   /* تنسيقات أساسية للتجاوب */
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-    .logo-circle .large-D {
-        font-size: 45px !important;
-        color: #00e676;
-        font-weight: bold;
-        line-height: 1;
-    }
+body { font-family: 'Cairo', sans-serif; overflow-x: hidden; }
 
-    .logo-circle .circle-text {
-        font-size: 11px !important;
-        font-weight: bold;
-        margin-top: 2px;
-    }
-
-    /* 2. مربعات الميزات الأربع (دعم، شحن، ضمان، عروض) */
-    .features-grid, .cards-container {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr) !important;
-        gap: 8px !important;
-        padding: 0 10px 10px 10px !important;
-    }
-
-  }
-  .products-grid {
-  display: flex;
-  flex-wrap: wrap; /* يجعل العناصر تنزل لسطر جديد تلقائياً إذا ضاقت المساحة */
-  gap: 20px;
+/* الهيدر المتجاوب */
+.header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 5%;
+    background: #000;
+    color: #fff;
 }
 
-.product-card {
-  flex: 1 1 250px; /* العنصر سيأخذ مساحة مرنة بحد أدنى 250 بكسل */
+/* تنسيق القائمة */
+.header nav { display: flex; gap: 20px; }
+.header nav a { color: #fff; text-decoration: none; font-weight: 600; }
+
+/* للهواتف (أقل من 768px) */
+@media (max-width: 768px) {
+    .header { flex-direction: column; gap: 15px; text-align: center; }
+    .header nav { gap: 10px; font-size: 14px; }
+    .search-container { max-width: 100%; margin: 10px 0; }
 }
 
-/* 1. الكود الأساسي للشاشات الصغيرة (الهواتف) */
-.container {
-  padding: 10px;
-  font-size: 14px;
-}
-
-/* 2. الأجهزة اللوحية والأكبر (Tablet) */
-@media (width >= 768px) {
-  .container {
+/* قسم الخدمات المتجاوب */
+.services {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
     padding: 20px;
-    font-size: 16px;
-  }
 }
 
-/* 3. الحواسيب والشاشات الكبيرة (Desktop) */
-@media (width >= 1024px) {
-  .container {
-    max-width: 1200px;
-    margin: 0 auto; /* توسيط المحتوى في الشاشات الكبيرة */
-  }
-
+/* قسم المنتجات */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 20px;
 }
